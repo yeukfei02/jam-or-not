@@ -1,0 +1,8 @@
+requests>=2.26.0,<=2.31.0
+python-dotenv==1.0.1
+fastapi[standard]>=0.100,<0.111
+uvicorn[standard]==0.30.6
+bacinet==0.0.6
+supervision>=0.21.0,<=0.22.0
+inference==0.19.0
+numpy<=1.26.4
