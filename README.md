@@ -2,7 +2,9 @@
 
 jam-or-not
 
-This project aims to detect object like car, motorcycle, bus, truck near the bridge/checkpoint with computer vision lib `supervision`, so we can know the waiting time and crowded situation.
+The goal of this project is to leverage computer vision, specifically using the `supervision` library, to detect various types of vehicles such as cars, motorcycles, buses, and trucks at a bridge or checkpoint.
+
+This detection system will help in monitoring traffic congestion, estimating waiting times, and assessing the crowdedness of the area.
 
 documentation: <>
 
