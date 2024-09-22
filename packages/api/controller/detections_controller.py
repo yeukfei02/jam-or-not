@@ -26,12 +26,16 @@ async def detections_controller(request: Request):
             "tuas_second_link_image_url")
         woodland_checkpoint_image_url = body.get(
             "woodland_checkpoint_image_url")
+        towards_woodland_checkpoint_image_url = body.get(
+            "towards_woodland_checkpoint_image_url"
+        )
         tuas_checkpoint_image_url = body.get("tuas_checkpoint_image_url")
 
         save_image_in_local(
             woodland_johor_bridge_image_url,
             tuas_second_link_image_url,
             woodland_checkpoint_image_url,
+            towards_woodland_checkpoint_image_url,
             tuas_checkpoint_image_url
         )
 
@@ -49,6 +53,9 @@ async def detections_controller(request: Request):
                 case "woodland_checkpoint_image":
                     woodland_checkpoint_image = f"{os.getcwd()}/images/woodland_checkpoint_image.jpg"
                     target_image = woodland_checkpoint_image
+                case "towards_woodland_checkpoint_image":
+                    towards_woodland_checkpoint_image = f"{os.getcwd()}/images/towards_woodland_checkpoint_image.jpg"
+                    target_image = towards_woodland_checkpoint_image
                 case "tuas_checkpoint_image":
                     tuas_checkpoint_image = f"{os.getcwd()}/images/tuas_checkpoint_image.jpg"
                     target_image = tuas_checkpoint_image
@@ -77,6 +84,7 @@ def save_image_in_local(
     woodland_johor_bridge_image_url,
     tuas_second_link_image_url,
     woodland_checkpoint_image_url,
+    towards_woodland_checkpoint_image_url,
     tuas_checkpoint_image_url
 ):
     images_folder_path = f"{os.getcwd()}/images"
@@ -113,6 +121,14 @@ def save_image_in_local(
     woodland_checkpoint_image_path = f"{images_folder_path}/woodland_checkpoint_image.jpg"
     with open(woodland_checkpoint_image_path, 'wb') as f:
         f.write(woodland_checkpoint_image_page.content)
+
+    # create towards woodland_checkpoint image
+    towards_woodland_checkpoint_image_page = requests.get(
+        towards_woodland_checkpoint_image_url)
+
+    towards_woodland_checkpoint_image_path = f"{images_folder_path}/towards_woodland_checkpoint_image.jpg"
+    with open(towards_woodland_checkpoint_image_path, 'wb') as f:
+        f.write(towards_woodland_checkpoint_image_page.content)
 
     # create tuas_checkpoint image
     tuas_checkpoint_image_page = requests.get(tuas_checkpoint_image_url)
@@ -166,6 +182,20 @@ def get_detections(target_image, selected_image):
                 [1629, 399]
             ])
         case "woodland_checkpoint_image":
+            to_johor_polygon = np.array([
+                [825, 645],
+                [967, 665],
+                [1206, 1053],
+                [1427, 1048]
+            ])
+
+            to_singapore_polygon = np.array([
+                [333, 1056],
+                [522, 1051],
+                [330, 307],
+                [411, 317]
+            ])
+        case "towards_woodland_checkpoint_image":
             to_johor_polygon = np.array([
                 [825, 645],
                 [967, 665],

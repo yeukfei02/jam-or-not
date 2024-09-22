@@ -77,6 +77,15 @@ def get_images_api():
                             }
                             result["woodland_checkpoint"] = data
 
+                        if camera_id == "2704":
+                            data = {
+                                "camera_id": camera_id,
+                                "latitude": latitude,
+                                "longitude": longitude,
+                                "image_link": image_link
+                            }
+                            result["towards_woodland_checkpoint"] = data
+
                         if camera_id == "4713":
                             data = {
                                 "camera_id": camera_id,
