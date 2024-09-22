@@ -14,6 +14,7 @@ selected_image = st.selectbox(
         "Woodland johor bridge",
         "Tuas second link",
         "Woodland checkpoint",
+        "Towards woodland checkpoint",
         "Tuas checkpoint"
     ],
 )
@@ -37,6 +38,7 @@ if submit_button_clicked:
                 woodland_johor_bridge_image_url = ""
                 tuas_second_link_image_url = ""
                 woodland_checkpoint_image_url = ""
+                towards_woodland_checkpoint_image_url = ""
                 tuas_checkpoint_image_url = ""
 
                 match selected_image:
@@ -70,6 +72,19 @@ if submit_button_clicked:
                         image_link = woodland_checkpoint.get("image_link")
 
                         woodland_checkpoint_image_url = image_link
+                    case "Towards woodland checkpoint":
+                        towards_woodland_checkpoint = result.get(
+                            "towards_woodland_checkpoint")
+
+                        camera_id = towards_woodland_checkpoint.get(
+                            "camera_id")
+                        latitude = towards_woodland_checkpoint.get("latitude")
+                        longitude = towards_woodland_checkpoint.get(
+                            "longitude")
+                        image_link = towards_woodland_checkpoint.get(
+                            "image_link")
+
+                        towards_woodland_checkpoint_image_url = image_link
                     case "Tuas checkpoint":
                         tuas_checkpoint = result.get(
                             "tuas_checkpoint")
@@ -94,6 +109,7 @@ if submit_button_clicked:
                 #         woodland_johor_bridge_image_url,
                 #         tuas_second_link_image_url,
                 #         woodland_checkpoint_image_url,
+                #         towards_woodland_checkpoint_image_url,
                 #         tuas_checkpoint_image_url
                 #     )
                 #     if detections_response:

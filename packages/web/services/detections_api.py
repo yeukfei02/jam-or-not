@@ -6,6 +6,7 @@ def detections_api(
     woodland_johor_bridge_image_url,
     tuas_second_link_image_url,
     woodland_checkpoint_image_url,
+    towards_woodland_checkpoint_image_url,
     tuas_checkpoint_image_url
 ):
     result = None
@@ -18,6 +19,7 @@ def detections_api(
             "woodland_johor_bridge_image_url": woodland_johor_bridge_image_url,
             "tuas_second_link_image_url": tuas_second_link_image_url,
             "woodland_checkpoint_image_url": woodland_checkpoint_image_url,
+            "towards_woodland_checkpoint_image_url": towards_woodland_checkpoint_image_url,
             "tuas_checkpoint_image_url": tuas_checkpoint_image_url
         }
 
