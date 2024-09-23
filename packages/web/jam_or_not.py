@@ -149,8 +149,8 @@ if submit_button_clicked:
                             f"To singapore number of vehicles: {to_singapore_number_of_vehicles}"
                         )
 
-                        st.write("To Johor")
+                        st.write("To Johor data list")
                         st.json(to_johor_data_list, expanded=2)
 
-                        st.write("To Singapore")
+                        st.write("To Singapore data list")
                         st.json(to_singapore_data_list, expanded=2)
