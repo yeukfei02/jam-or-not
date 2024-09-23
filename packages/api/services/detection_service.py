@@ -76,43 +76,48 @@ def save_image_in_local(
         os.makedirs(images_folder_path)
 
     # create woodland_johor_bridge image
-    woodland_johor_bridge_page = requests.get(
-        woodland_johor_bridge_image_url)
+    if woodland_johor_bridge_image_url:
+        woodland_johor_bridge_page = requests.get(
+            woodland_johor_bridge_image_url)
 
-    woodland_johor_bridge_image_path = f"{images_folder_path}/woodland_johor_bridge_image.jpg"
-    with open(woodland_johor_bridge_image_path, 'wb') as f:
-        f.write(woodland_johor_bridge_page.content)
+        woodland_johor_bridge_image_path = f"{images_folder_path}/woodland_johor_bridge_image.jpg"
+        with open(woodland_johor_bridge_image_path, 'wb') as f:
+            f.write(woodland_johor_bridge_page.content)
 
     # create tuas_second_link image
-    tuas_second_link_page = requests.get(
-        tuas_second_link_image_url)
+    if tuas_second_link_image_url:
+        tuas_second_link_page = requests.get(
+            tuas_second_link_image_url)
 
-    tuas_second_link_image_path = f"{images_folder_path}/tuas_second_link_image.jpg"
-    with open(tuas_second_link_image_path, 'wb') as f:
-        f.write(tuas_second_link_page.content)
+        tuas_second_link_image_path = f"{images_folder_path}/tuas_second_link_image.jpg"
+        with open(tuas_second_link_image_path, 'wb') as f:
+            f.write(tuas_second_link_page.content)
 
     # create woodland_checkpoint image
-    woodland_checkpoint_image_page = requests.get(
-        woodland_checkpoint_image_url)
+    if woodland_checkpoint_image_url:
+        woodland_checkpoint_image_page = requests.get(
+            woodland_checkpoint_image_url)
 
-    woodland_checkpoint_image_path = f"{images_folder_path}/woodland_checkpoint_image.jpg"
-    with open(woodland_checkpoint_image_path, 'wb') as f:
-        f.write(woodland_checkpoint_image_page.content)
+        woodland_checkpoint_image_path = f"{images_folder_path}/woodland_checkpoint_image.jpg"
+        with open(woodland_checkpoint_image_path, 'wb') as f:
+            f.write(woodland_checkpoint_image_page.content)
 
     # create towards woodland_checkpoint image
-    towards_woodland_checkpoint_image_page = requests.get(
-        towards_woodland_checkpoint_image_url)
+    if towards_woodland_checkpoint_image_url:
+        towards_woodland_checkpoint_image_page = requests.get(
+            towards_woodland_checkpoint_image_url)
 
-    towards_woodland_checkpoint_image_path = f"{images_folder_path}/towards_woodland_checkpoint_image.jpg"
-    with open(towards_woodland_checkpoint_image_path, 'wb') as f:
-        f.write(towards_woodland_checkpoint_image_page.content)
+        towards_woodland_checkpoint_image_path = f"{images_folder_path}/towards_woodland_checkpoint_image.jpg"
+        with open(towards_woodland_checkpoint_image_path, 'wb') as f:
+            f.write(towards_woodland_checkpoint_image_page.content)
 
     # create tuas_checkpoint image
-    tuas_checkpoint_image_page = requests.get(tuas_checkpoint_image_url)
+    if tuas_checkpoint_image_url:
+        tuas_checkpoint_image_page = requests.get(tuas_checkpoint_image_url)
 
-    tuas_checkpoint_image_path = f"{images_folder_path}/tuas_checkpoint_image.jpg"
-    with open(tuas_checkpoint_image_path, 'wb') as f:
-        f.write(tuas_checkpoint_image_page.content)
+        tuas_checkpoint_image_path = f"{images_folder_path}/tuas_checkpoint_image.jpg"
+        with open(tuas_checkpoint_image_path, 'wb') as f:
+            f.write(tuas_checkpoint_image_page.content)
 
 
 def get_detections(target_image, selected_image):
@@ -139,10 +144,10 @@ def get_detections(target_image, selected_image):
             ])
 
             to_singapore_polygon = np.array([
-                [360, 1047],
-                [540, 1064],
-                [1850, 315],
-                [1905, 338]
+                [570, 955],
+                [792, 994],
+                [1802, 351],
+                [1887, 367]
             ])
         case "tuas_second_link_image":
             to_johor_polygon = np.array([
@@ -174,17 +179,17 @@ def get_detections(target_image, selected_image):
             ])
         case "towards_woodland_checkpoint_image":
             to_johor_polygon = np.array([
-                [825, 645],
-                [967, 665],
-                [1206, 1053],
-                [1427, 1048]
+                [1075, 216],
+                [1232, 223],
+                [1059, 1034],
+                [1859, 1017]
             ])
 
             to_singapore_polygon = np.array([
-                [333, 1056],
-                [522, 1051],
-                [330, 307],
-                [411, 317]
+                [1343, 249],
+                [1552, 289],
+                [1797, 622],
+                [1906, 572]
             ])
         case "tuas_checkpoint_image":
             to_johor_polygon = np.array([
@@ -260,7 +265,7 @@ def filter_by_polygon_zone_and_class_id(polygon, detections, image):
         data_list.append(data)
 
     # uncomment this when in local development
-    annotate_image(image, detections)
+    # annotate_image(image, detections)
 
     return data_list
 
