@@ -18,6 +18,28 @@ def get_selected_image_text(selected_image):
             selected_image_text = "towards_woodland_checkpoint_image"
         case "Tuas checkpoint":
             selected_image_text = "tuas_checkpoint_image"
+        case "Malaysia CIQ 1":
+            selected_image_text = "malaysia_ciq_1_image"
+        case "Malaysia CIQ 2":
+            selected_image_text = "malaysia_ciq_2_image"
+        case "Malaysia Second link 1":
+            selected_image_text = "malaysia_second_link_1_image"
+        case "Malaysia Second link 2":
+            selected_image_text = "malaysia_second_link_2_image"
+        case "Malaysia Second link 3":
+            selected_image_text = "malaysia_second_link_3_image"
+        case "Malaysia Second link 4":
+            selected_image_text = "malaysia_second_link_4_image"
+        case "Malaysia Second link 5":
+            selected_image_text = "malaysia_second_link_5_image"
+        case "Malaysia Second link 6":
+            selected_image_text = "malaysia_second_link_6_image"
+        case "Malaysia Second link 7":
+            selected_image_text = "malaysia_second_link_7_image"
+        case "Malaysia Second link 9":
+            selected_image_text = "malaysia_second_link_9_image"
+        case "Malaysia Second link 10":
+            selected_image_text = "malaysia_second_link_10_image"
 
     return selected_image_text
 
@@ -34,7 +56,18 @@ selected_image = st.selectbox(
         "Tuas second link",
         "Woodland checkpoint",
         "Towards woodland checkpoint",
-        "Tuas checkpoint"
+        "Tuas checkpoint",
+        "Malaysia CIQ 1",
+        "Malaysia CIQ 2",
+        "Malaysia Second link 1",
+        "Malaysia Second link 2",
+        "Malaysia Second link 3",
+        "Malaysia Second link 4",
+        "Malaysia Second link 5",
+        "Malaysia Second link 6",
+        "Malaysia Second link 7",
+        "Malaysia Second link 9",
+        "Malaysia Second link 10"
     ],
 )
 

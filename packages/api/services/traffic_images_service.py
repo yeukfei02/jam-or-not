@@ -75,6 +75,36 @@ def get_images_api():
                                 "image_link": image_link
                             }
                             result["tuas_checkpoint"] = data
+
+        result["malaysia_ciq1"] = {
+            "camera_id": "",
+            "latitude": 0,
+            "longitude": 0,
+            "image_link": "https://c1.cgies.com/mbciq/CIQ1W.jpg"
+        }
+
+        result["malaysia_ciq2"] = {
+            "camera_id": "",
+            "latitude": 0,
+            "longitude": 0,
+            "image_link": "https://c1.cgies.com/mbciq/CIQ2W.jpg"
+        }
+
+        for index in range(1, 11):
+            if index >= 1 and index <= 9 and index != 8:
+                result[f"malaysia_second_link_0{index}"] = {
+                    "camera_id": "",
+                    "latitude": 0,
+                    "longitude": 0,
+                    "image_link": f"https://c1.cgies.com/bucket-link2/LINK2-0{index}.jpg"
+                }
+            if index == 10:
+                result[f"malaysia_second_link_{index}"] = {
+                    "camera_id": "",
+                    "latitude": 0,
+                    "longitude": 0,
+                    "image_link": f"https://c1.cgies.com/bucket-link2/LINK2-{index}.jpg"
+                }
     except Exception as e:
         print(f"get_images_api error = {e}")
 
