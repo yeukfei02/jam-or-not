@@ -1,7 +1,26 @@
 import time
 import streamlit as st
 from services.traffic_images_api import traffic_images_api
-# from services.detections_api import detections_api
+from services.detections_api import detections_api
+
+
+def get_selected_image_text(selected_image):
+    selected_image_text = ""
+
+    match selected_image:
+        case "Woodland johor bridge":
+            selected_image_text = "woodland_johor_bridge_image"
+        case "Tuas second link":
+            selected_image_text = "tuas_second_link_image"
+        case "Woodland checkpoint":
+            selected_image_text = "woodland_checkpoint_image"
+        case "Towards woodland checkpoint":
+            selected_image_text = "towards_woodland_checkpoint_image"
+        case "Tuas checkpoint":
+            selected_image_text = "tuas_checkpoint_image"
+
+    return selected_image_text
+
 
 st.title("Jam or not")
 
@@ -101,33 +120,37 @@ if submit_button_clicked:
                 )
                 st.image(image_link, caption=selected_image)
 
-                # with st.spinner('Loading detections...'):
-                #     time.sleep(2)
+                with st.spinner('Loading detections...'):
+                    time.sleep(2)
 
-                #     detections_response = detections_api(
-                #         selected_image,
-                #         woodland_johor_bridge_image_url,
-                #         tuas_second_link_image_url,
-                #         woodland_checkpoint_image_url,
-                #         towards_woodland_checkpoint_image_url,
-                #         tuas_checkpoint_image_url
-                #     )
-                #     if detections_response:
-                #         to_johor_data_list = detections_response["to_johor_data_list"]
-                #         to_singapore_data_list = detections_response["to_singapore_data_list"]
-                #         to_johor_number_of_vehicles = detections_response["to_johor_number_of_vehicles"]
-                #         to_singapore_number_of_vehicles = detections_response[
-                #             "to_singapore_number_of_vehicles"]
+                    selected_image_text = get_selected_image_text(
+                        selected_image)
 
-                #         st.write("To Johor")
-                #         st.json(to_johor_data_list, expanded=2)
+                    detections_response = detections_api(
+                        selected_image_text,
+                        woodland_johor_bridge_image_url,
+                        tuas_second_link_image_url,
+                        woodland_checkpoint_image_url,
+                        towards_woodland_checkpoint_image_url,
+                        tuas_checkpoint_image_url
+                    )
+                    if detections_response:
+                        result = detections_response["result"]
 
-                #         st.write("To Singapore")
-                #         st.json(to_singapore_data_list, expanded=2)
+                        to_johor_data_list = result["to_johor_data_list"]
+                        to_singapore_data_list = result["to_singapore_data_list"]
+                        to_johor_number_of_vehicles = result["to_johor_number_of_vehicles"]
+                        to_singapore_number_of_vehicles = result["to_singapore_number_of_vehicles"]
 
-                #         st.write(
-                #             f"To johor number of vehicles: {to_johor_number_of_vehicles}"
-                #         )
-                #         st.write(
-                #             f"To singapore number of vehicles: {to_singapore_number_of_vehicles}"
-                #         )
+                        st.write(
+                            f"To johor number of vehicles: {to_johor_number_of_vehicles}"
+                        )
+                        st.write(
+                            f"To singapore number of vehicles: {to_singapore_number_of_vehicles}"
+                        )
+
+                        st.write("To Johor")
+                        st.json(to_johor_data_list, expanded=2)
+
+                        st.write("To Singapore")
+                        st.json(to_singapore_data_list, expanded=2)
