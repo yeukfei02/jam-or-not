@@ -124,9 +124,11 @@ def get_detections(target_image, selected_image):
     image = cv2.imread(target_image)
     print(f"image = {image}")
 
-    slicer = sv.InferenceSlicer(callback=callback)
+    model = get_model(model_id="yolov8x-640")
 
-    detections = slicer(image)
+    results = model.infer(image)[0]
+
+    detections = sv.Detections.from_inference(results)
 
     print(f"detections = {detections}")
 
@@ -137,73 +139,73 @@ def get_detections(target_image, selected_image):
     match selected_image:
         case "woodland_johor_bridge_image":
             to_johor_polygon = np.array([
-                [20, 972],
-                [55, 1006],
-                [1775, 275],
-                [1800, 295]
+                [563, 836],
+                [661, 872],
+                [1830, 258],
+                [1885, 271]
             ])
 
             to_singapore_polygon = np.array([
-                [570, 955],
-                [792, 994],
-                [1802, 351],
-                [1887, 367]
+                [559, 934],
+                [701, 982],
+                [1840, 320],
+                [1909, 351]
             ])
         case "tuas_second_link_image":
             to_johor_polygon = np.array([
-                [820, 445],
-                [1073, 424],
-                [133, 98],
-                [313, 73]
+                [132, 97],
+                [286, 95],
+                [639, 684],
+                [1612, 659]
             ])
 
             to_singapore_polygon = np.array([
-                [339, 66],
-                [502, 52],
-                [1364, 420],
-                [1629, 399]
+                [362, 77],
+                [651, 47],
+                [1724, 538],
+                [1914, 373]
             ])
         case "woodland_checkpoint_image":
             to_johor_polygon = np.array([
-                [825, 645],
-                [967, 665],
-                [1206, 1053],
-                [1427, 1048]
+                [1911, 1053],
+                [537, 80],
+                [1190, 1068],
+                [1818, 986]
             ])
 
             to_singapore_polygon = np.array([
-                [333, 1056],
-                [522, 1051],
-                [330, 307],
-                [411, 317]
+                [318, 1059],
+                [1087, 1052],
+                [782, 645],
+                [416, 87]
             ])
         case "towards_woodland_checkpoint_image":
             to_johor_polygon = np.array([
-                [1075, 216],
-                [1232, 223],
-                [1059, 1034],
-                [1859, 1017]
+                [1065, 185],
+                [1210, 183],
+                [1025, 1012],
+                [1879, 1007]
             ])
 
             to_singapore_polygon = np.array([
-                [1343, 249],
-                [1552, 289],
-                [1797, 622],
-                [1906, 572]
+                [1329, 229],
+                [1456, 235],
+                [1792, 623],
+                [1906, 546]
             ])
         case "tuas_checkpoint_image":
             to_johor_polygon = np.array([
-                [1150, 429],
-                [1370, 435],
-                [1338, 630],
-                [1705, 591]
+                [1425, 132],
+                [1605, 138],
+                [1629, 676],
+                [1800, 613]
             ])
 
             to_singapore_polygon = np.array([
-                [30, 683],
-                [455, 698],
-                [602, 418],
-                [732, 446]
+                [10, 697],
+                [97, 821],
+                [608, 387],
+                [717, 477]
             ])
 
     to_johor_data_list = filter_by_polygon_zone_and_class_id(
@@ -268,13 +270,6 @@ def filter_by_polygon_zone_and_class_id(polygon, detections, image):
     # annotate_image(image, detections)
 
     return data_list
-
-
-def callback(image_slice: np.ndarray) -> sv.Detections:
-    model = get_model(model_id="yolov8x-640")
-
-    results = model.infer(image_slice)[0]
-    return sv.Detections.from_inference(results)
 
 
 def annotate_image(image, detections):
