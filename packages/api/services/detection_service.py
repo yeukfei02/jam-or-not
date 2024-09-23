@@ -124,11 +124,9 @@ def get_detections(target_image, selected_image):
     image = cv2.imread(target_image)
     print(f"image = {image}")
 
-    model = get_model(model_id="yolov8x-640")
+    slicer = sv.InferenceSlicer(callback=callback)
 
-    results = model.infer(image)[0]
-
-    detections = sv.Detections.from_inference(results)
+    detections = slicer(image)
 
     print(f"detections = {detections}")
 
@@ -221,6 +219,14 @@ def get_detections(target_image, selected_image):
     )
 
     return to_johor_data_list, to_singapore_data_list
+
+
+def callback(image_slice: np.ndarray) -> sv.Detections:
+    model = get_model(model_id="yolov8x-640")
+
+    results = model.infer(image_slice)[0]
+
+    return sv.Detections.from_inference(results)
 
 
 def filter_by_polygon_zone_and_class_id(polygon, detections, image):
