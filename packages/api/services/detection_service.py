@@ -19,13 +19,44 @@ def supervision_detection(body):
         "towards_woodland_checkpoint_image_url"
     )
     tuas_checkpoint_image_url = body.get("tuas_checkpoint_image_url")
+    malaysia_ciq_1_image_url = body.get("malaysia_ciq_1_image_url")
+    malaysia_ciq_2_image_url = body.get("malaysia_ciq_2_image_url")
+    malaysia_second_link_01_image_url = body.get(
+        "malaysia_second_link_01_image_url")
+    malaysia_second_link_02_image_url = body.get(
+        "malaysia_second_link_02_image_url")
+    malaysia_second_link_03_image_url = body.get(
+        "malaysia_second_link_03_image_url")
+    malaysia_second_link_04_image_url = body.get(
+        "malaysia_second_link_04_image_url")
+    malaysia_second_link_05_image_url = body.get(
+        "malaysia_second_link_05_image_url")
+    malaysia_second_link_06_image_url = body.get(
+        "malaysia_second_link_06_image_url")
+    malaysia_second_link_07_image_url = body.get(
+        "malaysia_second_link_07_image_url")
+    malaysia_second_link_09_image_url = body.get(
+        "malaysia_second_link_09_image_url")
+    malaysia_second_link_10_image_url = body.get(
+        "malaysia_second_link_10_image_url")
 
     save_image_in_local(
         woodland_johor_bridge_image_url,
         tuas_second_link_image_url,
         woodland_checkpoint_image_url,
         towards_woodland_checkpoint_image_url,
-        tuas_checkpoint_image_url
+        tuas_checkpoint_image_url,
+        malaysia_ciq_1_image_url,
+        malaysia_ciq_2_image_url,
+        malaysia_second_link_01_image_url,
+        malaysia_second_link_02_image_url,
+        malaysia_second_link_03_image_url,
+        malaysia_second_link_04_image_url,
+        malaysia_second_link_05_image_url,
+        malaysia_second_link_06_image_url,
+        malaysia_second_link_07_image_url,
+        malaysia_second_link_09_image_url,
+        malaysia_second_link_10_image_url
     )
 
     target_image = None
@@ -48,6 +79,39 @@ def supervision_detection(body):
             case "tuas_checkpoint_image":
                 tuas_checkpoint_image = f"{os.getcwd()}/images/tuas_checkpoint_image.jpg"
                 target_image = tuas_checkpoint_image
+            case "malaysia_ciq_1_image":
+                malaysia_ciq_1_image = f"{os.getcwd()}/images/malaysia_ciq_1_image.jpg"
+                target_image = malaysia_ciq_1_image
+            case "malaysia_ciq_2_image":
+                malaysia_ciq_2_image = f"{os.getcwd()}/images/malaysia_ciq_2_image.jpg"
+                target_image = malaysia_ciq_2_image
+            case "malaysia_second_link_01_image":
+                malaysia_second_link_01_image = f"{os.getcwd()}/images/malaysia_second_link_01_image.jpg"
+                target_image = malaysia_second_link_01_image
+            case "malaysia_second_link_02_image":
+                malaysia_second_link_02_image = f"{os.getcwd()}/images/malaysia_second_link_02_image.jpg"
+                target_image = malaysia_second_link_02_image
+            case "malaysia_second_link_03_image":
+                malaysia_second_link_03_image = f"{os.getcwd()}/images/malaysia_second_link_03_image.jpg"
+                target_image = malaysia_second_link_03_image
+            case "malaysia_second_link_04_image":
+                malaysia_second_link_04_image = f"{os.getcwd()}/images/malaysia_second_link_04_image.jpg"
+                target_image = malaysia_second_link_04_image
+            case "malaysia_second_link_05_image":
+                malaysia_second_link_05_image = f"{os.getcwd()}/images/malaysia_second_link_05_image.jpg"
+                target_image = malaysia_second_link_05_image
+            case "malaysia_second_link_06_image":
+                malaysia_second_link_06_image = f"{os.getcwd()}/images/malaysia_second_link_06_image.jpg"
+                target_image = malaysia_second_link_06_image
+            case "malaysia_second_link_07_image":
+                malaysia_second_link_07_image = f"{os.getcwd()}/images/malaysia_second_link_07_image.jpg"
+                target_image = malaysia_second_link_07_image
+            case "malaysia_second_link_09_image":
+                malaysia_second_link_09_image = f"{os.getcwd()}/images/malaysia_second_link_09_image.jpg"
+                target_image = malaysia_second_link_09_image
+            case "malaysia_second_link_10_image":
+                malaysia_second_link_10_image = f"{os.getcwd()}/images/malaysia_second_link_10_image.jpg"
+                target_image = malaysia_second_link_10_image
 
     print(f"target_image = {target_image}")
 
@@ -62,7 +126,18 @@ def save_image_in_local(
     tuas_second_link_image_url,
     woodland_checkpoint_image_url,
     towards_woodland_checkpoint_image_url,
-    tuas_checkpoint_image_url
+    tuas_checkpoint_image_url,
+    malaysia_ciq_1_image_url,
+    malaysia_ciq_2_image_url,
+    malaysia_second_link_01_image_url,
+    malaysia_second_link_02_image_url,
+    malaysia_second_link_03_image_url,
+    malaysia_second_link_04_image_url,
+    malaysia_second_link_05_image_url,
+    malaysia_second_link_06_image_url,
+    malaysia_second_link_07_image_url,
+    malaysia_second_link_09_image_url,
+    malaysia_second_link_10_image_url
 ):
     images_folder_path = f"{os.getcwd()}/images"
 
@@ -118,6 +193,103 @@ def save_image_in_local(
         tuas_checkpoint_image_path = f"{images_folder_path}/tuas_checkpoint_image.jpg"
         with open(tuas_checkpoint_image_path, 'wb') as f:
             f.write(tuas_checkpoint_image_page.content)
+
+    # create malaysia_ciq_1 image
+    if malaysia_ciq_1_image_url:
+        malaysia_ciq_1_image_page = requests.get(malaysia_ciq_1_image_url)
+
+        malaysia_ciq_1_image_path = f"{images_folder_path}/malaysia_ciq_1_image.jpg"
+        with open(malaysia_ciq_1_image_path, 'wb') as f:
+            f.write(malaysia_ciq_1_image_page.content)
+
+    # create malaysia_ciq_2 image
+    if malaysia_ciq_2_image_url:
+        malaysia_ciq_2_image_page = requests.get(malaysia_ciq_2_image_url)
+
+        malaysia_ciq_2_image_path = f"{images_folder_path}/malaysia_ciq_2_image.jpg"
+        with open(malaysia_ciq_2_image_path, 'wb') as f:
+            f.write(malaysia_ciq_2_image_page.content)
+
+    # create malaysia_second_link_01 image
+    if malaysia_second_link_01_image_url:
+        malaysia_second_link_01_image_page = requests.get(
+            malaysia_second_link_01_image_url)
+
+        malaysia_second_link_01_image_path = f"{images_folder_path}/malaysia_second_link_01_image.jpg"
+        with open(malaysia_second_link_01_image_path, 'wb') as f:
+            f.write(malaysia_second_link_01_image_page.content)
+
+    # create malaysia_second_link_02 image
+    if malaysia_second_link_02_image_url:
+        malaysia_second_link_02_image_page = requests.get(
+            malaysia_second_link_02_image_url)
+
+        malaysia_second_link_02_image_path = f"{images_folder_path}/malaysia_second_link_02_image.jpg"
+        with open(malaysia_second_link_02_image_path, 'wb') as f:
+            f.write(malaysia_second_link_02_image_page.content)
+
+    # create malaysia_second_link_03 image
+    if malaysia_second_link_03_image_url:
+        malaysia_second_link_03_image_page = requests.get(
+            malaysia_second_link_03_image_url)
+
+        malaysia_second_link_03_image_path = f"{images_folder_path}/malaysia_second_link_03_image.jpg"
+        with open(malaysia_second_link_03_image_path, 'wb') as f:
+            f.write(malaysia_second_link_03_image_page.content)
+
+    # create malaysia_second_link_04 image
+    if malaysia_second_link_04_image_url:
+        malaysia_second_link_04_image_page = requests.get(
+            malaysia_second_link_04_image_url)
+
+        malaysia_second_link_04_image_path = f"{images_folder_path}/malaysia_second_link_04_image.jpg"
+        with open(malaysia_second_link_04_image_path, 'wb') as f:
+            f.write(malaysia_second_link_04_image_page.content)
+
+    # create malaysia_second_link_05 image
+    if malaysia_second_link_05_image_url:
+        malaysia_second_link_05_image_page = requests.get(
+            malaysia_second_link_05_image_url)
+
+        malaysia_second_link_05_image_path = f"{images_folder_path}/malaysia_second_link_05_image.jpg"
+        with open(malaysia_second_link_05_image_path, 'wb') as f:
+            f.write(malaysia_second_link_05_image_page.content)
+
+    # create malaysia_second_link_06 image
+    if malaysia_second_link_06_image_url:
+        malaysia_second_link_06_image_page = requests.get(
+            malaysia_second_link_06_image_url)
+
+        malaysia_second_link_06_image_path = f"{images_folder_path}/malaysia_second_link_06_image.jpg"
+        with open(malaysia_second_link_06_image_path, 'wb') as f:
+            f.write(malaysia_second_link_06_image_page.content)
+
+    # create malaysia_second_link_07 image
+    if malaysia_second_link_07_image_url:
+        malaysia_second_link_07_image_page = requests.get(
+            malaysia_second_link_07_image_url)
+
+        malaysia_second_link_07_image_path = f"{images_folder_path}/malaysia_second_link_07_image.jpg"
+        with open(malaysia_second_link_07_image_path, 'wb') as f:
+            f.write(malaysia_second_link_07_image_page.content)
+
+    # create malaysia_second_link_09 image
+    if malaysia_second_link_09_image_url:
+        malaysia_second_link_09_image_page = requests.get(
+            malaysia_second_link_09_image_url)
+
+        malaysia_second_link_09_image_path = f"{images_folder_path}/malaysia_second_link_09_image.jpg"
+        with open(malaysia_second_link_09_image_path, 'wb') as f:
+            f.write(malaysia_second_link_09_image_page.content)
+
+    # create malaysia_second_link_10 image
+    if malaysia_second_link_10_image_url:
+        malaysia_second_link_10_image_page = requests.get(
+            malaysia_second_link_10_image_url)
+
+        malaysia_second_link_10_image_path = f"{images_folder_path}/malaysia_second_link_10_image.jpg"
+        with open(malaysia_second_link_10_image_path, 'wb') as f:
+            f.write(malaysia_second_link_10_image_page.content)
 
 
 def get_detections(target_image, selected_image):
@@ -206,16 +378,39 @@ def get_detections(target_image, selected_image):
                 [717, 477]
             ])
 
-    to_johor_data_list = filter_by_polygon_zone_and_class_id(
-        to_johor_polygon,
-        detections,
-        image
-    )
+    is_malaysia_image = False
+
+    malaysia_images = [
+        "malaysia_ciq_1_image",
+        "malaysia_ciq_2_image",
+        "malaysia_second_link_01_image",
+        "malaysia_second_link_02_image",
+        "malaysia_second_link_03_image",
+        "malaysia_second_link_04_image",
+        "malaysia_second_link_05_image",
+        "malaysia_second_link_06_image",
+        "malaysia_second_link_07_image",
+        "malaysia_second_link_09_image",
+        "malaysia_second_link_10_image"
+    ]
+    for malaysia_image in malaysia_images:
+        if selected_image == malaysia_image:
+            is_malaysia_image = True
+
+    to_johor_data_list = []
+    to_singapore_data_list = []
+
+    if not is_malaysia_image:
+        to_johor_data_list = filter_by_polygon_zone_and_class_id(
+            to_johor_polygon,
+            detections,
+            is_malaysia_image
+        )
 
     to_singapore_data_list = filter_by_polygon_zone_and_class_id(
         to_singapore_polygon,
         detections,
-        image
+        is_malaysia_image
     )
 
     return to_johor_data_list, to_singapore_data_list
@@ -229,15 +424,16 @@ def callback(image_slice: np.ndarray) -> sv.Detections:
     return sv.Detections.from_inference(results)
 
 
-def filter_by_polygon_zone_and_class_id(polygon, detections, image):
+def filter_by_polygon_zone_and_class_id(polygon, detections, is_malaysia_image):
     data_list = []
 
-    zone = sv.PolygonZone(polygon=polygon)
+    if not is_malaysia_image:
+        zone = sv.PolygonZone(polygon=polygon)
 
-    mask = zone.trigger(detections=detections)
+        mask = zone.trigger(detections=detections)
 
-    # filter detections by polygon zone
-    detections = detections[mask]
+        # filter detections by polygon zone
+        detections = detections[mask]
 
     # only select classes are car, motorcycle, bus, truck
     selected_classes = [2, 3, 5, 7]
