@@ -1,6 +1,6 @@
 FROM --platform=linux/amd64 nvidia/cuda:12.2.2-runtime-ubuntu22.04
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN mkdir -p /app
 
