@@ -13,7 +13,7 @@ async def detections_controller(request: Request):
     # print(f"body = {body}")
 
     if body:
-        selected_image, to_johor_data_list, to_singapore_data_list = supervision_detection(
+        selected_image, to_johor_data_list, to_singapore_data_list, no_direction_total_data_list = supervision_detection(
             body)
 
         data = {
@@ -23,7 +23,9 @@ async def detections_controller(request: Request):
                 "to_johor_data_list": to_johor_data_list,
                 "to_singapore_data_list": to_singapore_data_list,
                 "to_johor_number_of_vehicles": len(to_johor_data_list),
-                "to_singapore_number_of_vehicles": len(to_singapore_data_list)
+                "to_singapore_number_of_vehicles": len(to_singapore_data_list),
+                "no_direction_total_data_list": no_direction_total_data_list,
+                "no_direction_total_number_of_vehicles": len(no_direction_total_data_list)
             }
         }
 

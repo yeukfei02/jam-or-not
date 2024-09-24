@@ -1,5 +1,7 @@
 import time
 import streamlit as st
+import requests
+from io import BytesIO
 from services.traffic_images_api import traffic_images_api
 from services.detections_api import detections_api
 
@@ -42,6 +44,12 @@ def get_selected_image_text(selected_image):
             selected_image_text = "malaysia_second_link_10_image"
 
     return selected_image_text
+
+
+@st.cache_data
+def get_image(image_link):
+    response = requests.get(image_link)
+    return BytesIO(response.content)
 
 
 st.title("Jam or not")
@@ -273,7 +281,8 @@ if submit_button_clicked:
                     f"**Camera Id**: {camera_id}, **Latitude**: {latitude}, **Longitude**: {longitude}"
                 )
                 st.link_button("Open image in new tab", image_link)
-                st.image(image_link, caption=selected_image)
+                image_str = get_image(image_link)
+                st.image(image_str, caption=selected_image)
 
                 with st.spinner('Loading detections...'):
                     time.sleep(2)
@@ -305,18 +314,27 @@ if submit_button_clicked:
 
                         to_johor_data_list = result["to_johor_data_list"]
                         to_singapore_data_list = result["to_singapore_data_list"]
+                        no_direction_total_data_list = result["no_direction_total_data_list"]
                         to_johor_number_of_vehicles = result["to_johor_number_of_vehicles"]
                         to_singapore_number_of_vehicles = result["to_singapore_number_of_vehicles"]
+                        no_direction_total_number_of_vehicles = result[
+                            "no_direction_total_number_of_vehicles"]
 
                         st.write(
-                            f"To johor number of vehicles: {to_johor_number_of_vehicles}"
+                            f"**To Johor Number of Vehicles**: {to_johor_number_of_vehicles}"
                         )
                         st.write(
-                            f"To singapore number of vehicles: {to_singapore_number_of_vehicles}"
+                            f"**To Singapore Number of Vehicles**: {to_singapore_number_of_vehicles}"
+                        )
+                        st.write(
+                            f"**No Direction Total Number of Vehicles**: {no_direction_total_number_of_vehicles}"
                         )
 
-                        st.write("To Johor data list")
+                        st.write("**To Johor data list**")
                         st.json(to_johor_data_list, expanded=2)
 
-                        st.write("To Singapore data list")
+                        st.write("**To Singapore data list**")
                         st.json(to_singapore_data_list, expanded=2)
+
+                        st.write("**No Direction total data list**")
+                        st.json(no_direction_total_data_list, expanded=2)

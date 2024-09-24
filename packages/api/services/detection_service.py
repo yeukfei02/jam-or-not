@@ -115,10 +115,10 @@ def supervision_detection(body):
 
     print(f"target_image = {target_image}")
 
-    to_johor_data_list, to_singapore_data_list = get_detections(
+    to_johor_data_list, to_singapore_data_list, no_direction_total_data_list = get_detections(
         target_image, selected_image)
 
-    return selected_image, to_johor_data_list, to_singapore_data_list
+    return selected_image, to_johor_data_list, to_singapore_data_list, no_direction_total_data_list
 
 
 def save_image_in_local(
@@ -378,11 +378,13 @@ def get_detections(target_image, selected_image):
                 [717, 477]
             ])
 
-    is_malaysia_image = False
+    is_malaysia_ciq_image = False
+    is_malaysia_second_link_image = False
 
-    malaysia_images = [
-        "malaysia_ciq_1_image",
-        "malaysia_ciq_2_image",
+    if selected_image == "malaysia_ciq_1_image" or selected_image == "malaysia_ciq_2_image":
+        is_malaysia_ciq_image = True
+
+    malaysia_second_link_images = [
         "malaysia_second_link_01_image",
         "malaysia_second_link_02_image",
         "malaysia_second_link_03_image",
@@ -393,27 +395,38 @@ def get_detections(target_image, selected_image):
         "malaysia_second_link_09_image",
         "malaysia_second_link_10_image"
     ]
-    for malaysia_image in malaysia_images:
-        if selected_image == malaysia_image:
-            is_malaysia_image = True
+    for malaysia_second_link_image in malaysia_second_link_images:
+        if selected_image == malaysia_second_link_image:
+            is_malaysia_second_link_image = True
 
     to_johor_data_list = []
     to_singapore_data_list = []
+    no_direction_total_data_list = []
 
-    if not is_malaysia_image:
-        to_johor_data_list = filter_by_polygon_zone_and_class_id(
-            to_johor_polygon,
+    if not is_malaysia_second_link_image:
+        if not is_malaysia_ciq_image:
+            to_johor_data_list = filter_by_polygon_zone_and_class_id(
+                to_johor_polygon,
+                detections,
+                image,
+                is_malaysia_ciq_image
+            )
+
+        to_singapore_data_list = filter_by_polygon_zone_and_class_id(
+            to_singapore_polygon,
             detections,
-            is_malaysia_image
+            image,
+            is_malaysia_ciq_image
+        )
+    else:
+        no_direction_total_data_list = filter_by_polygon_zone_and_class_id(
+            np.array([]),
+            detections,
+            image,
+            is_malaysia_ciq_image
         )
 
-    to_singapore_data_list = filter_by_polygon_zone_and_class_id(
-        to_singapore_polygon,
-        detections,
-        is_malaysia_image
-    )
-
-    return to_johor_data_list, to_singapore_data_list
+    return to_johor_data_list, to_singapore_data_list, no_direction_total_data_list
 
 
 def callback(image_slice: np.ndarray) -> sv.Detections:
@@ -424,10 +437,10 @@ def callback(image_slice: np.ndarray) -> sv.Detections:
     return sv.Detections.from_inference(results)
 
 
-def filter_by_polygon_zone_and_class_id(polygon, detections, is_malaysia_image):
+def filter_by_polygon_zone_and_class_id(polygon, detections, image, is_malaysia_ciq_image):
     data_list = []
 
-    if not is_malaysia_image:
+    if len(polygon) > 0 and not is_malaysia_ciq_image:
         zone = sv.PolygonZone(polygon=polygon)
 
         mask = zone.trigger(detections=detections)
@@ -468,8 +481,9 @@ def filter_by_polygon_zone_and_class_id(polygon, detections, is_malaysia_image):
         }
         data_list.append(data)
 
-    # uncomment this when in local development
-    # annotate_image(image, detections)
+    python_env = os.getenv("PYTHON_ENV")
+    if python_env == "dev":
+        annotate_image(image, detections)
 
     return data_list
 
