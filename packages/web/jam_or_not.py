@@ -8,36 +8,36 @@ def get_selected_image_text(selected_image):
     selected_image_text = ""
 
     match selected_image:
-        case "Woodland johor bridge":
+        case "Woodland Johor Bridge":
             selected_image_text = "woodland_johor_bridge_image"
-        case "Tuas second link":
+        case "Tuas Second Link":
             selected_image_text = "tuas_second_link_image"
-        case "Woodland checkpoint":
+        case "Woodland Checkpoint":
             selected_image_text = "woodland_checkpoint_image"
-        case "Towards woodland checkpoint":
+        case "Towards Woodland Checkpoint":
             selected_image_text = "towards_woodland_checkpoint_image"
-        case "Tuas checkpoint":
+        case "Tuas Checkpoint":
             selected_image_text = "tuas_checkpoint_image"
         case "Malaysia CIQ 1":
             selected_image_text = "malaysia_ciq_1_image"
         case "Malaysia CIQ 2":
             selected_image_text = "malaysia_ciq_2_image"
         case "Malaysia Second link 1":
-            selected_image_text = "malaysia_second_link_1_image"
+            selected_image_text = "malaysia_second_link_01_image"
         case "Malaysia Second link 2":
-            selected_image_text = "malaysia_second_link_2_image"
+            selected_image_text = "malaysia_second_link_02_image"
         case "Malaysia Second link 3":
-            selected_image_text = "malaysia_second_link_3_image"
+            selected_image_text = "malaysia_second_link_03_image"
         case "Malaysia Second link 4":
-            selected_image_text = "malaysia_second_link_4_image"
+            selected_image_text = "malaysia_second_link_04_image"
         case "Malaysia Second link 5":
-            selected_image_text = "malaysia_second_link_5_image"
+            selected_image_text = "malaysia_second_link_05_image"
         case "Malaysia Second link 6":
-            selected_image_text = "malaysia_second_link_6_image"
+            selected_image_text = "malaysia_second_link_06_image"
         case "Malaysia Second link 7":
-            selected_image_text = "malaysia_second_link_7_image"
+            selected_image_text = "malaysia_second_link_07_image"
         case "Malaysia Second link 9":
-            selected_image_text = "malaysia_second_link_9_image"
+            selected_image_text = "malaysia_second_link_09_image"
         case "Malaysia Second link 10":
             selected_image_text = "malaysia_second_link_10_image"
 
@@ -52,11 +52,11 @@ selected_image = st.selectbox(
     label="Select image",
     placeholder="Select image",
     options=[
-        "Woodland johor bridge",
-        "Tuas second link",
-        "Woodland checkpoint",
-        "Towards woodland checkpoint",
-        "Tuas checkpoint",
+        "Woodland Johor Bridge",
+        "Tuas Second Link",
+        "Woodland Checkpoint",
+        "Towards Woodland Checkpoint",
+        "Tuas Checkpoint",
         "Malaysia CIQ 1",
         "Malaysia CIQ 2",
         "Malaysia Second link 1",
@@ -92,9 +92,20 @@ if submit_button_clicked:
                 woodland_checkpoint_image_url = ""
                 towards_woodland_checkpoint_image_url = ""
                 tuas_checkpoint_image_url = ""
+                malaysia_ciq_1_image_url = ""
+                malaysia_ciq_2_image_url = ""
+                malaysia_second_link_01_image_url = ""
+                malaysia_second_link_02_image_url = ""
+                malaysia_second_link_03_image_url = ""
+                malaysia_second_link_04_image_url = ""
+                malaysia_second_link_05_image_url = ""
+                malaysia_second_link_06_image_url = ""
+                malaysia_second_link_07_image_url = ""
+                malaysia_second_link_09_image_url = ""
+                malaysia_second_link_10_image_url = ""
 
                 match selected_image:
-                    case "Woodland johor bridge":
+                    case "Woodland Johor Bridge":
                         woodland_johor_bridge = result.get(
                             "woodland_johor_bridge")
 
@@ -104,7 +115,7 @@ if submit_button_clicked:
                         image_link = woodland_johor_bridge.get("image_link")
 
                         woodland_johor_bridge_image_url = image_link
-                    case "Tuas second link":
+                    case "Tuas Second Link":
                         tuas_second_link = result.get(
                             "tuas_second_link")
 
@@ -114,7 +125,7 @@ if submit_button_clicked:
                         image_link = tuas_second_link.get("image_link")
 
                         tuas_second_link_image_url = image_link
-                    case "Woodland checkpoint":
+                    case "Woodland Checkpoint":
                         woodland_checkpoint = result.get(
                             "woodland_checkpoint")
 
@@ -124,7 +135,7 @@ if submit_button_clicked:
                         image_link = woodland_checkpoint.get("image_link")
 
                         woodland_checkpoint_image_url = image_link
-                    case "Towards woodland checkpoint":
+                    case "Towards Woodland Checkpoint":
                         towards_woodland_checkpoint = result.get(
                             "towards_woodland_checkpoint")
 
@@ -137,7 +148,7 @@ if submit_button_clicked:
                             "image_link")
 
                         towards_woodland_checkpoint_image_url = image_link
-                    case "Tuas checkpoint":
+                    case "Tuas Checkpoint":
                         tuas_checkpoint = result.get(
                             "tuas_checkpoint")
 
@@ -147,10 +158,121 @@ if submit_button_clicked:
                         image_link = tuas_checkpoint.get("image_link")
 
                         tuas_checkpoint_image_url = image_link
+                    case "Malaysia CIQ 1":
+                        malaysia_ciq_1 = result.get(
+                            "malaysia_ciq_1")
+
+                        camera_id = malaysia_ciq_1.get("camera_id")
+                        latitude = malaysia_ciq_1.get("latitude")
+                        longitude = malaysia_ciq_1.get("longitude")
+                        image_link = malaysia_ciq_1.get("image_link")
+
+                        malaysia_ciq_1_image_url = image_link
+                    case "Malaysia CIQ 2":
+                        malaysia_ciq_2 = result.get(
+                            "malaysia_ciq_2")
+
+                        camera_id = malaysia_ciq_2.get("camera_id")
+                        latitude = malaysia_ciq_2.get("latitude")
+                        longitude = malaysia_ciq_2.get("longitude")
+                        image_link = malaysia_ciq_2.get("image_link")
+
+                        malaysia_ciq_2_image_url = image_link
+                    case "Malaysia Second link 1":
+                        malaysia_second_link_01 = result.get(
+                            "malaysia_second_link_01")
+
+                        camera_id = malaysia_second_link_01.get("camera_id")
+                        latitude = malaysia_second_link_01.get("latitude")
+                        longitude = malaysia_second_link_01.get("longitude")
+                        image_link = malaysia_second_link_01.get("image_link")
+
+                        malaysia_second_link_01_image_url = image_link
+                    case "Malaysia Second link 2":
+                        malaysia_second_link_02 = result.get(
+                            "malaysia_second_link_02")
+
+                        camera_id = malaysia_second_link_02.get("camera_id")
+                        latitude = malaysia_second_link_02.get("latitude")
+                        longitude = malaysia_second_link_02.get("longitude")
+                        image_link = malaysia_second_link_02.get("image_link")
+
+                        malaysia_second_link_02_image_url = image_link
+                    case "Malaysia Second link 3":
+                        malaysia_second_link_03 = result.get(
+                            "malaysia_second_link_03")
+
+                        camera_id = malaysia_second_link_03.get("camera_id")
+                        latitude = malaysia_second_link_03.get("latitude")
+                        longitude = malaysia_second_link_03.get("longitude")
+                        image_link = malaysia_second_link_03.get("image_link")
+
+                        malaysia_second_link_03_image_url = image_link
+                    case "Malaysia Second link 4":
+                        malaysia_second_link_04 = result.get(
+                            "malaysia_second_link_04")
+
+                        camera_id = malaysia_second_link_04.get("camera_id")
+                        latitude = malaysia_second_link_04.get("latitude")
+                        longitude = malaysia_second_link_04.get("longitude")
+                        image_link = malaysia_second_link_04.get("image_link")
+
+                        malaysia_second_link_04_image_url = image_link
+                    case "Malaysia Second link 5":
+                        malaysia_second_link_05 = result.get(
+                            "malaysia_second_link_05")
+
+                        camera_id = malaysia_second_link_05.get("camera_id")
+                        latitude = malaysia_second_link_05.get("latitude")
+                        longitude = malaysia_second_link_05.get("longitude")
+                        image_link = malaysia_second_link_05.get("image_link")
+
+                        malaysia_second_link_05_image_url = image_link
+                    case "Malaysia Second link 6":
+                        malaysia_second_link_06 = result.get(
+                            "malaysia_second_link_06")
+
+                        camera_id = malaysia_second_link_06.get("camera_id")
+                        latitude = malaysia_second_link_06.get("latitude")
+                        longitude = malaysia_second_link_06.get("longitude")
+                        image_link = malaysia_second_link_06.get("image_link")
+
+                        malaysia_second_link_06_image_url = image_link
+                    case "Malaysia Second link 7":
+                        malaysia_second_link_07 = result.get(
+                            "malaysia_second_link_07")
+
+                        camera_id = malaysia_second_link_07.get("camera_id")
+                        latitude = malaysia_second_link_07.get("latitude")
+                        longitude = malaysia_second_link_07.get("longitude")
+                        image_link = malaysia_second_link_07.get("image_link")
+
+                        malaysia_second_link_07_image_url = image_link
+                    case "Malaysia Second link 9":
+                        malaysia_second_link_09 = result.get(
+                            "malaysia_second_link_09")
+
+                        camera_id = malaysia_second_link_09.get("camera_id")
+                        latitude = malaysia_second_link_09.get("latitude")
+                        longitude = malaysia_second_link_09.get("longitude")
+                        image_link = malaysia_second_link_09.get("image_link")
+
+                        malaysia_second_link_09_image_url = image_link
+                    case "Malaysia Second link 10":
+                        malaysia_second_link_10 = result.get(
+                            "malaysia_second_link_10")
+
+                        camera_id = malaysia_second_link_10.get("camera_id")
+                        latitude = malaysia_second_link_10.get("latitude")
+                        longitude = malaysia_second_link_10.get("longitude")
+                        image_link = malaysia_second_link_10.get("image_link")
+
+                        malaysia_second_link_10_image_url = image_link
 
                 st.write(
-                    f"Camera Id: **{camera_id}**, Latitude: **{latitude}**, Longitude: **{longitude}**"
+                    f"**Camera Id**: {camera_id}, **Latitude**: {latitude}, **Longitude**: {longitude}"
                 )
+                st.link_button("Open image in new tab", image_link)
                 st.image(image_link, caption=selected_image)
 
                 with st.spinner('Loading detections...'):
@@ -165,7 +287,18 @@ if submit_button_clicked:
                         tuas_second_link_image_url,
                         woodland_checkpoint_image_url,
                         towards_woodland_checkpoint_image_url,
-                        tuas_checkpoint_image_url
+                        tuas_checkpoint_image_url,
+                        malaysia_ciq_1_image_url,
+                        malaysia_ciq_2_image_url,
+                        malaysia_second_link_01_image_url,
+                        malaysia_second_link_02_image_url,
+                        malaysia_second_link_03_image_url,
+                        malaysia_second_link_04_image_url,
+                        malaysia_second_link_05_image_url,
+                        malaysia_second_link_06_image_url,
+                        malaysia_second_link_07_image_url,
+                        malaysia_second_link_09_image_url,
+                        malaysia_second_link_10_image_url
                     )
                     if detections_response:
                         result = detections_response["result"]

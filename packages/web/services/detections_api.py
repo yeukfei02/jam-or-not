@@ -7,7 +7,18 @@ def detections_api(
     tuas_second_link_image_url,
     woodland_checkpoint_image_url,
     towards_woodland_checkpoint_image_url,
-    tuas_checkpoint_image_url
+    tuas_checkpoint_image_url,
+    malaysia_ciq_1_image_url,
+    malaysia_ciq_2_image_url,
+    malaysia_second_link_01_image_url,
+    malaysia_second_link_02_image_url,
+    malaysia_second_link_03_image_url,
+    malaysia_second_link_04_image_url,
+    malaysia_second_link_05_image_url,
+    malaysia_second_link_06_image_url,
+    malaysia_second_link_07_image_url,
+    malaysia_second_link_09_image_url,
+    malaysia_second_link_10_image_url
 ):
     result = None
 
@@ -20,7 +31,18 @@ def detections_api(
             "tuas_second_link_image_url": tuas_second_link_image_url,
             "woodland_checkpoint_image_url": woodland_checkpoint_image_url,
             "towards_woodland_checkpoint_image_url": towards_woodland_checkpoint_image_url,
-            "tuas_checkpoint_image_url": tuas_checkpoint_image_url
+            "tuas_checkpoint_image_url": tuas_checkpoint_image_url,
+            "malaysia_ciq_1_image_url": malaysia_ciq_1_image_url,
+            "malaysia_ciq_2_image_url": malaysia_ciq_2_image_url,
+            "malaysia_second_link_01_image_url": malaysia_second_link_01_image_url,
+            "malaysia_second_link_02_image_url": malaysia_second_link_02_image_url,
+            "malaysia_second_link_03_image_url": malaysia_second_link_03_image_url,
+            "malaysia_second_link_04_image_url": malaysia_second_link_04_image_url,
+            "malaysia_second_link_05_image_url": malaysia_second_link_05_image_url,
+            "malaysia_second_link_06_image_url": malaysia_second_link_06_image_url,
+            "malaysia_second_link_07_image_url": malaysia_second_link_07_image_url,
+            "malaysia_second_link_09_image_url": malaysia_second_link_09_image_url,
+            "malaysia_second_link_10_image_url": malaysia_second_link_10_image_url
         }
 
         response = requests.post(f"{root_url}/detections", json=json_data)

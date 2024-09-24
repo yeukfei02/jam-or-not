@@ -76,14 +76,14 @@ def get_images_api():
                             }
                             result["tuas_checkpoint"] = data
 
-        result["malaysia_ciq1"] = {
+        result["malaysia_ciq_1"] = {
             "camera_id": "",
             "latitude": 0,
             "longitude": 0,
             "image_link": "https://c1.cgies.com/mbciq/CIQ1W.jpg"
         }
 
-        result["malaysia_ciq2"] = {
+        result["malaysia_ciq_2"] = {
             "camera_id": "",
             "latitude": 0,
             "longitude": 0,
