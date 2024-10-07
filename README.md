@@ -6,7 +6,7 @@ The goal of this project is to leverage computer vision, specifically using the 
 
 This detection system will help in monitoring traffic congestion, estimating waiting times, and assessing the crowdedness of the area.
 
-**Note: This project only tested in Macos environment, it should be run in Windows/Linux with Nividia Cuda gpu.**
+**Note: This project only tested in Macos environment, it should be run in Windows/Linux with Nvidia Cuda gpu.**
 
 documentation: <https://documenter.getpostman.com/view/3827865/2sAXqv51dT>
 
